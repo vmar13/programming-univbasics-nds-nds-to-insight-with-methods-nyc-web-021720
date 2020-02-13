@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'directors_database'
+require 'pry'
 
 # Find a way to accumulate the :worldwide_grosses and return that Integer
 # using director_data as input
@@ -7,7 +8,7 @@ require 'directors_database'
 def gross_for_director(director_data)
   total = 0 
   index = 0 
-  
+  binding.pry 
   while index < director_data[:movies].length do 
     total += director_data[:movies][index][:worldwide_grosses]
     index += 1
@@ -26,7 +27,6 @@ def directors_totals(nds)
     director = nds[director_index]
     result[director[:name]] = gross_for_director(director)
     director_index += 1 
-    nil 
   end
   result
 end
